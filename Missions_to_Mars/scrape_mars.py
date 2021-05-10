@@ -9,28 +9,41 @@ from bs4 import BeautifulSoup
 
 # Import Splinter and set the chromedriver path
 from splinter import Browser
-# executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
-executable_path = {"executable_path": "chromedriver"}
-browser = Browser("chrome", **executable_path, headless=False)
 
-# Visit the following URL
-url = "https://spaceimages-mars.com"
-browser.visit(url)
+import time
+from webdriver_manager.chrome import ChromeDriverManager
 
-xpath = "/html/body/div[1]/img"
-results = browser.find_by_xpath(xpath)
-img = results[0]
-img.click()
+def scrape():
 
-html = browser.html
-soup = BeautifulSoup(html, 'html.parser')
-img_url = soup.find("img", class_="headerimage")["src"]
-#img_url
+    executable_path = {"executable_path": "chromedriver"}
+    browser = Browser("chrome", **executable_path, headless=False)
 
-# Import Pandas
-import pandas as pd
+    # Visit the following URL
+    url = "https://spaceimages-mars.com"
+    browser.visit(url)
+    
+    time.sleep(1)
 
-url = 'https://galaxyfacts-mars.com/'
-tables = pd.read_html(url)
-#tables
+    xpath = "/html/body/div[1]/img"
+    results = browser.find_by_xpath(xpath)
+    img = results[0]
+    img.click()
+
+    html = browser.html
+    soup = BeautifulSoup(html, 'html.parser')
+    img_url = soup.find("img", class_="headerimage")["src"]
+    #img_url
+
+    # Import Pandas
+    import pandas as pd
+
+    url = 'https://galaxyfacts-mars.com/'
+    tables = pd.read_html(url)
+    #tables
+    
+    # Close the browser after scraping
+    browser.quit()
+    
+    # Return Results
+    resturn tables
 
