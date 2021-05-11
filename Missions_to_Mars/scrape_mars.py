@@ -27,12 +27,13 @@ def scrape():
     xpath = "/html/body/div[1]/img"
     results = browser.find_by_xpath(xpath)
     img = results[0]
-    img.click()
+    # img.click()
 
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
     img_url = soup.find("img", class_="headerimage")["src"]
     #img_url
+    complete_url = url + img_url
 
     # Import Pandas
     import pandas as pd
@@ -44,6 +45,12 @@ def scrape():
     # Close the browser after scraping
     browser.quit()
     
+    bigbaliwick = {
+        "mars_img": img_url,
+        "mars_comparison": tables[0],
+        "mars_specs": tables[1]
+    }
+    
     # Return Results
-    resturn tables
+    return bigbaliwick
 
