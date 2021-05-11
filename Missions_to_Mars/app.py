@@ -1,6 +1,7 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
-from scrape_mars import scrape
+#from selenium import webdriver
+from scrape_mars import scrape_info
 #import scrape_mars
 
 # Create an instance of Flask
@@ -22,16 +23,16 @@ def home():
 
 
 @app.route("/scrape")
-def scraper():
+def scrape():
     
     # Run the scrape function
-    surface_data = scrape()
+    surface_data = scrape_info()
 
     # Update the Mongo database using update and upsert=True
     mongo.db.surface.update({}, surface_data, upsert=True)
     
     return redirect("/")
-    #return redirect("/", code=302)
+    #return redirect("/", code=302)
 
 
 if __name__ == "__main__":

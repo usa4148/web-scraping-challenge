@@ -13,7 +13,7 @@ import pandas as pd
 import time
 from webdriver_manager.chrome import ChromeDriverManager
 
-def scrape():
+def scrape_info():
 
     # Set up Splinter
     executable_path = {"executable_path": "chromedriver"}
@@ -27,30 +27,24 @@ def scrape():
 
     xpath = "/html/body/div[1]/img"
     results = browser.find_by_xpath(xpath)
-    img = results[0]
+    img_url = url + results[0]
     # img.click()
 
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
     img_url = soup.find("img", class_="headerimage")["src"]
-    #img_url
-    complete_url = url + img_url
-
-    # Import Pandas
-    import pandas as pd
+    
 
     url = 'https://galaxyfacts-mars.com/'
     tables = pd.read_html(url)
     #tables
-    
-    # Close the browser after scraping
-    browser.quit()
+    complete_url = url + img_url
     
     bigbaliwick = {
-        "mars_img": img_url
+        "mars_img": complete_url }
     #    "mars_comparison": tables[0],
     #    "mars_specs": tables[1]
-    }
+    #}
     #    bigbaliwick = {
     #    "mars_img": img_url,
     #    "mars_comparison": tables[0],
