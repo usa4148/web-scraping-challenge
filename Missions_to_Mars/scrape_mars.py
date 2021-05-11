@@ -27,7 +27,8 @@ def scrape_info():
 
     xpath = "/html/body/div[1]/img"
     results = browser.find_by_xpath(xpath)
-    img_url = url + results[0]
+    #img_url = url + results[0]
+    complete_url = url + results
     # img.click()
 
     html = browser.html
@@ -38,10 +39,10 @@ def scrape_info():
     url = 'https://galaxyfacts-mars.com/'
     tables = pd.read_html(url)
     #tables
-    complete_url = url + img_url
+    #complete_url = url + img_url
     
-    bigbaliwick = {
-        "mars_img": complete_url }
+    bigbaliwick = { complete_url }
+    #    "mars_img": complete_url }
     #    "mars_comparison": tables[0],
     #    "mars_specs": tables[1]
     #}
