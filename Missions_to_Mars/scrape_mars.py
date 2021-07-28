@@ -15,7 +15,7 @@ import pymongo
 import requests
 from webdriver_manager.chrome import ChromeDriverManager
 
-def scrape_info():
+def scrape():
 
     # Set up Splinter
     executable_path = {"executable_path": "chromedriver"}
@@ -83,8 +83,6 @@ def scrape_info():
     # Valles Marineris Hemisphere Enhanced
     url4 = 'https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg  
         
-    
-
     browser.visit(guss_url)  
     html = browser.html
     soup = BeautifulSoup(html,'html.parser')
@@ -96,27 +94,16 @@ def scrape_info():
     {"title": "Syrtis Major Hemisphere Enhanced", "img_url":url3},
     {"title": "Valles Marineris Hemisphere Enhanced", "img_url":url4}
     ]
-    
-    
-    bigbaliwick = { 
+        
+    mars_dict = { 
         "news_title":news_title,
         "news_content":news_content,
         "featured_image_url":featured_image_url,
         "mars_facts":mars_facts,
         "hemisphere_image_urls":hemisphere_image_urls
     }
-    #    "mars_img": complete_url }
-    #    "mars_comparison": tables[0],
-    #    "mars_specs": tables[1]
-    #}
-    #    bigbaliwick = {
-    #    "mars_img": img_url,
-    #    "mars_comparison": tables[0],
-    #    "mars_specs": tables[1]
-    #}
 
     browser.quit()
-    
     # Return Results
-    return bigbaliwick
+    return mars_dict
 
