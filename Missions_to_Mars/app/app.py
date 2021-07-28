@@ -25,10 +25,11 @@ def home():
 def scrape():
     
     # Run the scrape function
-    mars_dict = scrape_mars.scrape()
+    mars_dict = mongo.db.mars_dict
+    surfact_data = scrape_mars.scrape()
 
     # Update the Mongo database using update and upsert=True
-    mongo.db.surface.update({}, surface_data, upsert=True)
+    mars_dict.update({}, surface_data, upsert=True)
     
     return redirect("/")
     #return redirect("/", code=302)
