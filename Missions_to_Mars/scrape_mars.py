@@ -43,9 +43,10 @@ def scrape_info():
     html=browser.html
     soup = BeautifulSoup(html, 'html.parser')
     news_title = soup.find_all('div', class_='content_title')[0].text
-    news_title = soup.find_all('div', class_='article_teaser_body')[0].text
+    news_content = soup.find_all('div', class_='article_teaser_body')[0].text
     #title
     #news_title
+    #news_content
     
     # JPL Featured Image
     featured_image_site = 'https://spaceimages-mars.com/'
@@ -74,13 +75,13 @@ def scrape_info():
     guss_url = 'https://marshemispheres.com/'
 
     # Cerebus Hemisphere Enhanced
-    url1 = https://marshemispheres.com/images/full.jpg
+    url1 = 'https://marshemispheres.com/images/full.jpg'
     # Schiaparalli Hemisphere Enhanced
-    url2 = https://marshemispheres.com/images/schiaparelli_enhanced-full.jpg
+    url2 = 'https://marshemispheres.com/images/schiaparelli_enhanced-full.jpg'
     # Syrtis Major Hemisphere Enhanced
-    url3 = https://marshemispheres.com/images/syrtis_major_enhanced-full.jpg
+    url3 = 'https://marshemispheres.com/images/syrtis_major_enhanced-full.jpg'
     # Valles Marineris Hemisphere Enhanced
-    url4 = https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg   
+    url4 = 'https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg  
         
     
 
@@ -97,11 +98,13 @@ def scrape_info():
     ]
     
     
-    
-    #tables
-    #complete_url = url + img_url
-    
-    bigbaliwick = { complete_url }
+    bigbaliwick = { 
+        "news_title":news_title,
+        "news_content":news_content,
+        "featured_image_url":featured_image_url,
+        "mars_facts":mars_facts,
+        "hemisphere_image_urls":hemisphere_image_urls
+    }
     #    "mars_img": complete_url }
     #    "mars_comparison": tables[0],
     #    "mars_specs": tables[1]
