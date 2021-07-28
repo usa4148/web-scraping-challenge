@@ -69,7 +69,7 @@ def scrape():
     #mars_facts_html
     
     mars_facts_html.strip()
-    print(mars_facts_html)
+    #print(mars_facts_html)
     
     # hemispheres
     guss_url = 'https://marshemispheres.com/'
@@ -81,7 +81,7 @@ def scrape():
     # Syrtis Major Hemisphere Enhanced
     url3 = 'https://marshemispheres.com/images/syrtis_major_enhanced-full.jpg'
     # Valles Marineris Hemisphere Enhanced
-    url4 = 'https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg  
+    url4 = 'https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg'
         
     browser.visit(guss_url)  
     html = browser.html

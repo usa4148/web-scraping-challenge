@@ -13,9 +13,9 @@
   <div clas="container-fluid">
     <div class="jumbotron text-center">
       <h1>Have a Safe Landing!</h1>
-      <p><a class="btn btn-primary btn-lg" href="../app/scrape" role="button">Fly SpaceX</a></p>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Fly SpaceX</a></p>
     </div>
-    <img src="{{ complete_url }}" alt="mars">
+    <img src="{{ mars_dict|safe }}" alt="mars">
     <h3>Mars Surface Report</h3>
     <h3>Mars Comparison Data</h3>
     <h3>Mars Specs Report</h3>
@@ -23,4 +23,4 @@
   </div>
 </body>
 
-</html>
+</htm>

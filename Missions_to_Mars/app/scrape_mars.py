@@ -81,7 +81,7 @@ def scrape():
     # Syrtis Major Hemisphere Enhanced
     url3 = 'https://marshemispheres.com/images/syrtis_major_enhanced-full.jpg'
     # Valles Marineris Hemisphere Enhanced
-    url4 = 'https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg  
+    url4 = 'https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg'
         
     browser.visit(guss_url)  
     html = browser.html
