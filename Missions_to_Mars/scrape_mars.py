@@ -29,17 +29,68 @@ def scrape_info():
 
     xpath = "/html/body/div[1]/img"
     results = browser.find_by_xpath(xpath)
-    #img_url = url + results[0]
-    complete_url = url + results
-    # img.click()
+    img = results[0]
+    img.click()
 
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
     img_url = soup.find("img", class_="headerimage")["src"]
-    
 
+    img_url = url + img_url
+    # Get News
+    url = 'https://redplanetscience.com/'
+    browser.visit(url)
+    html=browser.html
+    soup = BeautifulSoup(html, 'html.parser')
+    news_title = soup.find_all('div', class_='content_title')[0].text
+    news_title = soup.find_all('div', class_='article_teaser_body')[0].text
+    #title
+    #news_title
+    
+    # JPL Featured Image
+    featured_image_site = 'https://spaceimages-mars.com/'
+    featured_image_url = 'https://spaceimages-mars.com/image/featured/mars3.jpg'
+    browser.visit(featured_image_url)
+    html = browser.html
+    soup = BeautifulSoup(html,'html.parser')
+    image_site = soup.find_all(class_='showing fancybox-thumbs')
+    #featured_image_url
+    
+    # Scrape Target 
     url = 'https://galaxyfacts-mars.com/'
     tables = pd.read_html(url)
+    tables
+    
+    mars_facts = tables[1]
+    #mars_facts
+    
+    mars_facts_html = facts.to_html()
+    #mars_facts_html
+    
+    mars_facts_html.strip()
+    print(mars_facts_html)
+    
+    # hemispheres
+    guss_url = 'https://marshemispheres.com/'
+
+    # Cerebus Hemisphere Enhanced
+    #url1 = https://marshemispheres.com/images/full.jpg
+    # Schiaparalli Hemisphere Enhanced
+    #url2 = https://marshemispheres.com/images/schiaparelli_enhanced-full.jpg
+    # Syrtis Major Hemisphere Enhanced
+    #url3 = https://marshemispheres.com/images/syrtis_major_enhanced-full.jpg
+    # Valles Marineris Hemisphere Enhanced
+    #url4 = https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg    
+
+    browser.visit(guss_url)  
+    html = browser.html
+    soup = BeautifulSoup(html,'html.parser')
+    hemisphere_image_urls = soup.find('div',class_='description')
+    #hemisphere_image_urls
+    
+    
+    
+    
     #tables
     #complete_url = url + img_url
     
