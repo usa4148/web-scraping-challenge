@@ -74,20 +74,27 @@ def scrape_info():
     guss_url = 'https://marshemispheres.com/'
 
     # Cerebus Hemisphere Enhanced
-    #url1 = https://marshemispheres.com/images/full.jpg
+    url1 = https://marshemispheres.com/images/full.jpg
     # Schiaparalli Hemisphere Enhanced
-    #url2 = https://marshemispheres.com/images/schiaparelli_enhanced-full.jpg
+    url2 = https://marshemispheres.com/images/schiaparelli_enhanced-full.jpg
     # Syrtis Major Hemisphere Enhanced
-    #url3 = https://marshemispheres.com/images/syrtis_major_enhanced-full.jpg
+    url3 = https://marshemispheres.com/images/syrtis_major_enhanced-full.jpg
     # Valles Marineris Hemisphere Enhanced
-    #url4 = https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg    
+    url4 = https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg   
+        
+    
 
     browser.visit(guss_url)  
     html = browser.html
     soup = BeautifulSoup(html,'html.parser')
     hemisphere_image_urls = soup.find('div',class_='description')
     #hemisphere_image_urls
-    
+    hemisphere_image_urls = [
+    {"title": "Cerebus Hemisphere Enhanced", "img_url":url1},
+    {"title": "Schiaparalli Hemisphere Enhanced", "img_url":url2},
+    {"title": "Syrtis Major Hemisphere Enhanced", "img_url":url3},
+    {"title": "Valles Marineris Hemisphere Enhanced", "img_url":url4}
+    ]
     
     
     
